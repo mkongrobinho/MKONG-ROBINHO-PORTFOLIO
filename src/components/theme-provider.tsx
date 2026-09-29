@@ -28,12 +28,22 @@ function getInitialTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>("light");
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
+    const initialTheme = getInitialTheme();
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    setIsInitialized(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isInitialized) return;
+
     document.documentElement.classList.toggle("dark", theme === "dark");
     window.localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme]);
+  }, [isInitialized, theme]);
 
   const toggleTheme = useCallback(() => {
     setTheme((t) => (t === "dark" ? "light" : "dark"));
