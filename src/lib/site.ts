@@ -112,17 +112,6 @@ export const projects = [
     monogram: "B",
     highlight: false,
   },
-  {
-    name: "Project Gamma",
-    description:
-      "A third project placeholder. What was the hardest technical challenge, and how did you crack it?",
-    tags: ["React", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/MKONG-ROBINHO/project-gamma",
-    demo: "",
-    accent: "from-emerald-500 to-teal-400",
-    monogram: "G",
-    highlight: false,
-  },
 ];
 
 export const githubUsername = "MKONG-ROBINHO";
